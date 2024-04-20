@@ -51,53 +51,24 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 ```
 # Introduction
 
-The deforestation data set provides vital information about
-deforestation trends around the world, as well as a data set
-specifically about Brazil. This data is from [*Our World in
-Data*](https://ourworldindata.org/forests-and-deforestation), comprising
-of 5 CSV files. Breaking down these CSV files:
+The deforestation data set provides vital information about deforestation trends around the world, as well as a data set specifically about Brazil. This data is from [*Our World in Data*](https://ourworldindata.org/forests-and-deforestation), comprising of 5 CSV files. Breaking down these CSV files:
 
 1.  `forest.csv` shows the change in forest area every 5 years.
-2.  `forest_area.csv` shows the change in forest area as a percentage of
-    the global forest area.
-3.  `brazil_loss.csv` shows the loss of Brazil's forests due to various
-    reasons such as pasture and commercial use.
-4.  `soybean_use.csv` shows the use and production of soybeans by
-    country and year (annually).
-5.  `vegetable_oil.csv` shows the trend of vegetable oil production by
-    year and country.
+2.  `forest_area.csv` shows the change in forest area as a percentage of the global forest area.
+3.  `brazil_loss.csv` shows the loss of Brazil's forests due to various reasons such as pasture and commercial use.
+4.  `soybean_use.csv` shows the use and production of soybeans by country and year (annually).
+5.  `vegetable_oil.csv` shows the trend of vegetable oil production by year and country.
 
 ------------------------------------------------------------------------
 
-The question that our group is examining is **Who is the main
-contributor of deforestation over time, and why?**. In our project, we
-are using 4 data sets mentioned above, namely `forest.csv`,
-`brazil_loss.csv`, `soybean_use.csv` and `vegetable_oil.csv`.
+The question that our group is examining is **Who is the main contributor of deforestation over time, and why?**. In our project, we are using 4 data sets mentioned above, namely `forest.csv`, `brazil_loss.csv`, `soybean_use.csv` and `vegetable_oil.csv`.
 
-Our group aims to identify the country with the most extensive forest
-destruction and the highest deforestation rates across the years.
-Additionally, we intend to discover the underlying causes behind the
-high deforestation rates in that country.
+Our group aims to identify the country with the most extensive forest destruction and the highest deforestation rates across the years.
+Additionally, we intend to discover the underlying causes behind the high deforestation rates in that country.
 
-Our group is interested in this question as we recognise the important
-role that forests play in our ecosystem. They act as the lungs of the
-earth, absorbing carbon dioxide and reducing heat trapped in the
-atmosphere *("Why Deforestation Matters---and What We Can Do to Stop
-It")*, thus lowering global temperature. They also provide habitats for
-indigenous people and a diverse range of wildlife species *(WWF, n.d.)*. 
-Without them, air temperatures increase, contributing to global warming, 
-and wildlife and indigenous people lose their homes. Analysing the main 
-contributors and causes of deforestation allows stakeholders and relevant 
-agencies to intervene and take necessary actions.
+Our group is interested in this question as we recognise the important role that forests play in our ecosystem. They act as the lungs of the earth, absorbing carbon dioxide and reducing heat trapped in the atmosphere *("Why Deforestation Matters---and What We Can Do to Stop It")*, thus lowering global temperature. They also provide habitats forindigenous people and a diverse range of wildlife species *(WWF, n.d.)*. Without them, air temperatures increase, contributing to global warming, and wildlife and indigenous people lose their homes. Analysing the main contributors and causes of deforestation allows stakeholders and relevant agencies to intervene and take necessary actions.
 
-To address this question, we will start off by using the `forest.csv`
-data set with the "net_forest_conversion" variable, indicating whether
-forest area has increased or decreased in five-year intervals. Using
-this data, we will generate a world map to illustrate the extent of
-forest destruction across the world, thus identifying the country with
-the highest total forest area destroyed till 2010. The use of
-`brazil_loss.csv`, `soybean_use.csv` and `vegetable_oil.csv` data set
-will be explained in the later part of the report.
+To address this question, we will start off by using the `forest.csv` data set with the "net_forest_conversion" variable, indicating whether forest area has increased or decreased in five-year intervals. Using this data, we will generate a world map to illustrate the extent of forest destruction across the world, thus identifying the country with the highest total forest area destroyed till 2010. The use of `brazil_loss.csv`, `soybean_use.csv` and `vegetable_oil.csv` data set will be explained in the later part of the report.
 
 # Data cleaning and visualisation
 
@@ -183,27 +154,15 @@ ggplot(data = world, aes(x = long, y = lat, group = group)) +
   guides(fill = guide_colorbar(reverse=FALSE)) # flip the legend around to order from lowest net forest loss to highest net forest loss
 ```
 
-The world map plot illustrates the forest loss from 2000 to 2010,
-using a gradient where lighter shades of blue indicate less forest
-loss and darker shades represent greater loss. Brazil appears to have
-the darkest shades of blue, indicating the highest forest loss in
-hectares compared to other countries.
+The world map plot illustrates the forest loss from 2000 to 2010, using a gradient where lighter shades of blue indicate less forest loss and darker shades represent greater loss. Brazil appears to have the darkest shades of blue, indicating the highest forest loss in hectares compared to other countries.
 
-This map plot clearly shows that Brazil is by far the largest
-contributor to deforestation with around 5 million hectares of forest
-loss in 10 years while the runner up comes in around 1 million hectares.
+This map plot clearly shows that Brazil is by far the largest contributor to deforestation with around 5 million hectares of forest loss in 10 years while the runner up comes in around 1 million hectares.
 
-A map plot was chosen as it allows us to immediately spot and identify
-any obvious outliers. Since our first visualisation aims to only spot
-outliers, we reserve the information gathering abilities of other plots
-for identifying causes and trends when drilling down into Brazil.
+A map plot was chosen as it allows us to immediately spot and identify any obvious outliers. Since our first visualisation aims to only spot outliers, we reserve the information gathering abilities of other plots for identifying causes and trends when drilling down into Brazil.
 
 ## Second visualisation
 
-Having established Brazil as the primary contributor to deforestation,
-our focus now shifts to uncovering the underlying causes. For this
-purpose, we will utilise the `brazil_loss.csv` data set, comprising 11
-distinct causes potentially contributing to deforestation in Brazil.
+Having established Brazil as the primary contributor to deforestation, our focus now shifts to uncovering the underlying causes. For this purpose, we will utilise the `brazil_loss.csv` data set, comprising 11 distinct causes potentially contributing to deforestation in Brazil.
 
 ### Data cleaning for `brazil_loss.csv`
 
@@ -250,34 +209,17 @@ ggplot(Causes_in_Brazil, aes(x = pct, y = Causes)) +
   xlim(0,75)
 ```
 
-The bar plot reveals that Pasture is consistently the primary cause of
-deforestation from 2001 to 2010. It also shows that in 2010 there was a
-sharp decrease in percentage of deforestation attributed to pasture
-and commercial crops while the percentage of deforestation 
-attributed by fire significant increased, particularly from 2009 to 2010.
+The bar plot reveals that Pasture is consistently the primary cause of deforestation from 2001 to 2010. It also shows that in 2010 there was a sharp decrease in percentage of deforestation attributed to pasture and commercial crops while the percentage of deforestation attributed by fire significant increased, particularly from 2009 to 2010.
 
-A bar plot is used to compare the percentages of deforestation for
-various causes, with each bar representing the percentage attributed to
-the specific cause. By observing which bar is the longest with different 
-colours, we can better differentiate them and easily discern the primary 
-cause of deforestation in Brazil is pasture. Adding `facet_wrap` layer 
-with allows us to analyse and compare the causes of deforestation across 
-different years to identify trends over time. 
+A bar plot is used to compare the percentages of deforestation for various causes, with each bar representing the percentage attributed to the specific cause. By observing which bar is the longest with different  colours, we can better differentiate them and easily discern the primary  cause of deforestation in Brazil is pasture. Adding `facet_wrap` layer with allows us to analyse and compare the causes of deforestation across  different years to identify trends over time. 
 
 ## Third visualisation
 
-In addition to the 11 causes documented in the `brazil_loss.csv` data
-set, our investigation will extend to explore additional potential
-contributors to Brazil\'s high deforestation rate. As of 2022, Brazil
-ranked 25th globally in terms of total exports *(The Observatory of Economic
-Complexity, 2022)*. Considering this, we hypothesise that the elevated
-deforestation rate in Brazil may be partially due to the cultivation of
-soybeans and production of vegetable oil. Both activities necessitate
-significant land use, which may consequently lead to heightened
-deforestation.
+In addition to the 11 causes documented in the `brazil_loss.csv` data set, our investigation will extend to explore additional potential
+contributors to Brazil\'s high deforestation rate. As of 2022, Brazil ranked 25th globally in terms of total exports *(The Observatory of Economic
+Complexity, 2022)*. Considering this, we hypothesise that the elevated deforestation rate in Brazil may be partially due to the cultivation of soybeans and production of vegetable oil. Both activities necessitate significant land use, which may consequently lead to heightened deforestation.
 
-To validate this assumption, we will now delve into the
-`vegetable_oil.csv` and `soybean_use.csv` data sets.
+To validate this assumption, we will now delve into the `vegetable_oil.csv` and `soybean_use.csv` data sets.
 
 ### Data cleaning for `vegetable_oil.csv`
 
@@ -295,9 +237,7 @@ vegetable_oil_long <- pivot_longer(vegetable_oil_wide, cols = -entity, names_to 
 
 ### Data merging for `vegetable_oil.csv` and `soybean_use.csv`
 
-We merged the soybean use and vegetable oil data sets to investigate the
-underlying reasons for Brazil's significant contribution to global
-deforestation.
+We merged the soybean use and vegetable oil data sets to investigate the underlying reasons for Brazil's significant contribution to global deforestation.
 
 ```{r, message = FALSE, warning = FALSE}
 # merging the soybean_use dataset with vegetable_oil dataset
@@ -359,8 +299,7 @@ ggplot(top5soyvege_combined_long, aes(x = year, y = production_amount, color = C
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-The line graphs illustrates a gradual increase in Brazil's soy and vegetable oil
-production from 2000 to 2010. Initially, Brazil held the third position globally in soy production in 2000. However, Argentina surpassed Brazil by a slight margin during the decade, causing Brazil to drop to the fourth position by 2010. 
+The line graphs illustrates a gradual increase in Brazil's soy and vegetable oil production from 2000 to 2010. Initially, Brazil held the third position globally in soy production in 2000. However, Argentina surpassed Brazil by a slight margin during the decade, causing Brazil to drop to the fourth position by 2010. 
 
 
 As for vegetable oil, Brazil consistently maintains its 7th position throughout the decade. This stable ranking indicates that Brazil consistently holds a significant position in the global vegetable oil market.
@@ -369,8 +308,7 @@ As for vegetable oil, Brazil consistently maintains its 7th position throughout 
 Moreover, the line graphs, as shown in Visualisation 3, aligns with the trends observed in Visualisation 2. Both soy and vegetable oil production in Brazil experienced a decline around 2005. This decline coincided with a decrease in deforestation rate for commercial crops, as seen in Visualisation 2.
 
 
-In summary, the line graphs were chosen to facilitate easy comparison of soy and vegetable oil production for each country. The use of facet wrap also allows for separate observation of soy and vegetable production on distinct graphs. The use of colours helps differentiate between
-multiple lines when they overlap. Adding `geom_point` facilitates easy identification of individual data points for each country in each year. This makes it easier to identify trends across the entire time period, as well as within that duration.
+In summary, the line graphs were chosen to facilitate easy comparison of soy and vegetable oil production for each country. The use of facet wrap also allows for separate observation of soy and vegetable production on distinct graphs. The use of colours helps differentiate between multiple lines when they overlap. Adding `geom_point` facilitates easy identification of individual data points for each country in each year. This makes it easier to identify trends across the entire time period, as well as within that duration.
 
 # Discussion
 
@@ -444,9 +382,7 @@ Ferreira, F. C. M., Biazzin, C., & Hong, P. C. (2024). Transition paths of Brazi
 
 # About
 
-This project was developed for *DSA2101 Essential Data Analytics Tools:
-Data Visualisation* at the National University of Singapore (NUS). The
-team is comprised of the following members:
+This project was developed for *DSA2101 Essential Data Analytics Tools: Data Visualisation* at the National University of Singapore (NUS). The team is comprised of the following members:
 
 |   Name    | Year |           Major            |         Responsibilities                  |
 |:---------:|:----:|:--------------------------:|:-----------------------------------------:|
